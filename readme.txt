@@ -1,1 +1,1 @@
-try to use git hook to record some information
+try to use git hook to record some information .
