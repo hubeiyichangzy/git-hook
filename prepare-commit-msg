@@ -1,0 +1,12 @@
+#!/bin/sh 
+echo $@
+case "$2,$3" in
+  commit,HEAD)
+    exit 0;;
+  *) 
+    read -p "Name:" name < /dev/tty 
+    read -p "Number:" number < /dev/tty 
+    read -p "Comment:" comment < /dev/tty 
+    echo "[$name] #$number $comment" > $1
+    ;;
+esac

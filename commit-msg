@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ip=$(ipconfig | grep "IPv4" | awk -F: '{print $2}'|awk -F. '{print "["$3"."$4"]"'})
+cat $1
+grep -E "^\[[0-9.]*\]" $1 > /dev/null
+if [ $? -ne 0 ] 
+then
+	cat $1 | awk -v ipadd="$ip" '{printf("%s %s", ipadd, $0)}' >.messagetmp
+	mv .messagetmp $1
+fi
+	
